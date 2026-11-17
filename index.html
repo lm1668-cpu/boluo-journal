@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f0df">
+  <meta name="description" content="認識菠蘿——一隻非洲灰鸚鵡的角色小誌，分享真實日常、清楚標示的插畫，以及有來源的鸚鵡小知識。">
+  <title>菠蘿小誌｜非洲灰鸚鵡的插畫與日常</title>
+  <style>
+    :root {
+      --paper: #f5f0df;
+      --paper-deep: #ede6d2;
+      --white: #fffdf7;
+      --sage: #a8b69d;
+      --sage-dark: #687b68;
+      --feather: #b9b9bc;
+      --ink: #303039;
+      --muted: #686761;
+      --red: #c83a35;
+      --line: rgba(48, 48, 57, .13);
+      --serif: Georgia, "Noto Serif TC", "Songti TC", serif;
+      --sans: "Noto Sans HK", "PingFang HK", "Microsoft JhengHei", system-ui, sans-serif;
+      --wrap: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    .wrap { width: min(var(--wrap), calc(100% - 48px)); margin-inline: auto; }
+    .top-note {
+      padding: 8px 16px;
+      text-align: center;
+      background: var(--ink);
+      color: #f9f5e8;
+      font-size: 12px;
+      letter-spacing: .08em;
+    }
+    .site-header { position: relative; z-index: 2; }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img {
+      width: 48px; height: 48px; object-fit: cover; border-radius: 50%;
+      border: 2px solid rgba(48,48,57,.12); background: var(--white);
+    }
+    .brand-name { font-family: var(--serif); font-size: 21px; font-weight: 700; letter-spacing: .08em; }
+    .brand-sub { display: block; margin-top: -4px; color: var(--muted); font-size: 10px; letter-spacing: .13em; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 13px; transition: color .2s ease; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-pill {
+      border: 1px solid rgba(48,48,57,.2); border-radius: 999px; padding: 8px 15px;
+      color: var(--ink) !important; font-size: 12px !important; letter-spacing: .04em;
+    }
+    .hero { padding: 76px 0 64px; overflow: hidden; }
+    .hero-inner { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: clamp(36px, 7vw, 92px); }
+    .eyebrow {
+      display: flex; align-items: center; gap: 10px; margin: 0 0 18px;
+      color: var(--sage-dark); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--sage-dark); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 610px; margin-bottom: 20px; font-family: var(--serif);
+      font-size: clamp(44px, 6vw, 76px); font-weight: 600; line-height: 1.17; letter-spacing: .02em;
+    }
+    h1 .accent { color: var(--red); }
+    .hero-copy { max-width: 520px; color: #57574f; font-size: 16px; line-height: 2; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+    .btn {
+      display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px;
+      padding: 0 21px; border: 1px solid var(--ink); border-radius: 3px; text-decoration: none;
+      font-size: 13px; font-weight: 650; transition: transform .2s ease, background .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: var(--white); background: var(--ink); }
+    .btn-primary:hover { background: var(--sage-dark); border-color: var(--sage-dark); }
+    .btn-quiet { border-color: transparent; padding-inline: 12px; }
+    .btn .arrow { font-size: 17px; line-height: 1; }
+    .hero-small { margin: 22px 0 0; color: var(--muted); font-size: 11px; }
+    .hero-art { position: relative; max-width: 510px; justify-self: end; width: 100%; }
+    .art-frame {
+      position: relative; z-index: 1; padding: 12px; background: var(--white);
+      border: 1px solid rgba(48,48,57,.09); box-shadow: 0 24px 60px rgba(48,48,57,.11);
+      transform: rotate(1.4deg);
+    }
+    .art-frame img { width: 100%; aspect-ratio: 4 / 4.6; object-fit: cover; }
+    .art-caption { display: flex; justify-content: space-between; gap: 12px; padding: 11px 3px 1px; color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+    .art-stamp {
+      position: absolute; z-index: 2; left: -25px; bottom: 50px; width: 106px; height: 106px;
+      display: grid; place-items: center; padding: 12px; border: 1px solid rgba(48,48,57,.13);
+      border-radius: 50%; background: var(--sage); color: var(--ink); text-align: center;
+      font-family: var(--serif); font-size: 13px; line-height: 1.4; transform: rotate(-9deg);
+    }
+    .hero-sun { position: absolute; width: 240px; height: 240px; border-radius: 50%; top: -50px; right: -80px; background: #e4dcbf; opacity: .75; }
+    .facts { background: var(--white); border-block: 1px solid var(--line); }
+    .facts-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+    .fact { display: flex; align-items: center; gap: 16px; min-height: 92px; padding: 20px 28px; border-right: 1px solid var(--line); }
+    .fact:first-child { padding-left: 0; }
+    .fact:last-child { border: 0; }
+    .fact-no { color: var(--red); font-family: var(--serif); font-size: 23px; }
+    .fact-label { display: block; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
+    .fact-value { display: block; font-family: var(--serif); font-size: 17px; font-weight: 600; }
+    section { scroll-margin-top: 28px; }
+    .intro { padding: 104px 0 108px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 38px; }
+    .section-head h2 { margin-bottom: 0; font-family: var(--serif); font-size: clamp(30px,4vw,45px); font-weight: 600; line-height: 1.3; }
+    .section-head .eyebrow { margin-bottom: 12px; }
+    .section-note { max-width: 350px; margin-bottom: 2px; color: var(--muted); font-size: 13px; }
+    .content-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .content-card {
+      position: relative; min-height: 222px; padding: 27px 27px 25px; overflow: hidden;
+      border: 1px solid var(--line); background: rgba(255,253,247,.62);
+    }
+    .content-card:nth-child(2) { background: #e9eee4; }
+    .content-card:nth-child(3) { background: #eee9dc; }
+    .card-index { color: var(--sage-dark); font-family: var(--serif); font-size: 13px; }
+    .content-card h3 { margin: 25px 0 8px; font-family: var(--serif); font-size: 22px; }
+    .content-card p { max-width: 290px; margin-bottom: 0; color: #5e5e56; font-size: 13px; line-height: 1.85; }
+    .card-mark { position: absolute; right: 22px; top: 22px; color: rgba(104,123,104,.18); font-family: var(--serif); font-size: 46px; }
+    .gallery-section { padding: 92px 0 106px; background: var(--white); border-block: 1px solid var(--line); }
+    .gallery-head { align-items: center; }
+    .draft-label { padding: 7px 12px; border: 1px solid rgba(200,58,53,.3); border-radius: 999px; color: var(--red); font-size: 11px; white-space: nowrap; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 30px 20px; }
+    .post-card { min-width: 0; }
+    .post-image { position: relative; overflow: hidden; background: var(--paper); aspect-ratio: 4 / 4.45; }
+    .post-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+    .post-card:hover .post-image img { transform: scale(1.035); }
+    .image-tag { position: absolute; left: 12px; top: 12px; padding: 5px 9px; background: rgba(255,253,247,.92); color: var(--ink); font-size: 10px; letter-spacing: .04em; }
+    .post-meta { display: flex; align-items: baseline; gap: 11px; margin-top: 14px; }
+    .post-number { color: var(--red); font-family: var(--serif); font-size: 13px; }
+    .post-card h3 { margin: 0; font-family: var(--serif); font-size: 19px; font-weight: 600; }
+    .post-desc { margin: 5px 0 0 34px; color: var(--muted); font-size: 11px; }
+    .note-band { padding: 94px 0; }
+    .note-grid { display: grid; grid-template-columns: .75fr 1.25fr; align-items: center; gap: 80px; }
+    .note-quote {
+      position: relative; min-height: 270px; display: flex; flex-direction: column; justify-content: center;
+      padding: 38px; background: var(--sage); color: var(--ink); overflow: hidden;
+    }
+    .note-quote::after { content: "“"; position: absolute; right: 10px; bottom: -85px; color: rgba(255,255,255,.26); font-family: var(--serif); font-size: 260px; line-height: 1; }
+    .note-quote small { position: relative; z-index: 1; color: rgba(48,48,57,.7); font-size: 10px; letter-spacing: .13em; }
+    .note-quote strong { position: relative; z-index: 1; max-width: 300px; margin-top: 15px; font-family: var(--serif); font-size: 31px; font-weight: 600; line-height: 1.55; }
+    .note-copy .eyebrow { margin-bottom: 12px; }
+    .note-copy h2 { margin-bottom: 16px; font-family: var(--serif); font-size: clamp(29px,3.6vw,40px); font-weight: 600; line-height: 1.35; }
+    .note-copy p { max-width: 580px; color: #5e5e56; font-size: 14px; line-height: 2; }
+    .note-points { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-top: 24px; }
+    .note-point { padding: 14px 15px; border-left: 2px solid var(--red); background: rgba(255,253,247,.66); }
+    .note-point b { display: block; margin-bottom: 3px; font-size: 12px; }
+    .note-point span { color: var(--muted); font-size: 11px; }
+    .follow { padding: 65px 0; background: var(--ink); color: var(--white); }
+    .follow-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .follow h2 { margin-bottom: 7px; font-family: var(--serif); font-size: 30px; font-weight: 500; }
+    .follow p { margin-bottom: 0; color: #d4d1c7; font-size: 12px; }
+    .follow .btn { flex: 0 0 auto; border-color: rgba(255,253,247,.5); color: var(--white); }
+    .follow .btn:hover { background: var(--white); color: var(--ink); }
+    footer { padding: 23px 0 30px; background: var(--ink); color: #b9b6ae; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,.15); padding-top: 18px; font-size: 10px; }
+    .footer-inner p { margin: 0; }
+    .footer-brand { color: var(--white); letter-spacing: .1em; }
+    @media (max-width: 800px) {
+      .nav { min-height: 72px; }
+      .nav-links { gap: 17px; }
+      .nav-links a { font-size: 12px; }
+      .nav-pill { display: none !important; }
+      .hero { padding-top: 55px; }
+      .hero-inner { gap: 34px; }
+      h1 { font-size: clamp(42px,7vw,62px); }
+      .fact { padding-inline: 16px; }
+      .note-grid { gap: 38px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 36px, var(--wrap)); }
+      .top-note { font-size: 10px; }
+      .nav { min-height: 68px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-name { font-size: 18px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 10px; }
+      .hero { padding: 48px 0 48px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 36px; }
+      .hero-copy { font-size: 14px; }
+      .hero-art { width: min(88%, 420px); justify-self: center; }
+      .art-stamp { width: 88px; height: 88px; left: -22px; bottom: 42px; font-size: 11px; }
+      .facts-grid { grid-template-columns: 1fr; padding-block: 8px; }
+      .fact, .fact:first-child { min-height: 67px; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+      .fact:last-child { border-bottom: 0; }
+      .fact-no { width: 34px; font-size: 20px; }
+      .fact-value { font-size: 15px; }
+      .intro { padding: 68px 0 72px; }
+      .section-head { display: block; margin-bottom: 27px; }
+      .section-note { margin-top: 15px; }
+      .content-cards { grid-template-columns: 1fr; gap: 10px; }
+      .content-card { min-height: 170px; padding: 22px; }
+      .content-card h3 { margin-top: 17px; }
+      .gallery-section { padding: 68px 0 75px; }
+      .gallery-head { display: flex; align-items: start; }
+      .gallery-head h2 { font-size: 30px; }
+      .draft-label { margin-top: 28px; font-size: 9px; }
+      .gallery-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 23px 12px; }
+      .post-image { aspect-ratio: 1 / 1.18; }
+      .image-tag { left: 7px; top: 7px; padding: 4px 7px; font-size: 9px; }
+      .post-meta { gap: 7px; margin-top: 10px; }
+      .post-card h3 { font-size: 14px; }
+      .post-desc { margin-left: 0; font-size: 10px; }
+      .note-band { padding: 68px 0; }
+      .note-grid { grid-template-columns: 1fr; gap: 32px; }
+      .note-quote { min-height: 210px; padding: 28px; }
+      .note-quote strong { font-size: 28px; }
+      .note-points { grid-template-columns: 1fr; }
+      .follow { padding: 48px 0; }
+      .follow-inner { align-items: start; flex-direction: column; }
+      .follow h2 { font-size: 27px; }
+      .footer-inner { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-note">角色插畫與真實紀錄，會清楚分開</div>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="菠蘿小誌首頁">
+        <img src="assets/boluo_african_grey_avatar_revised.webp" alt="菠蘿角色頭像插畫">
+        <span><span class="brand-name">菠蘿小誌</span><span class="brand-sub">非洲灰鸚鵡 · 角色與日常</span></span>
+      </a>
+      <nav class="nav-links" aria-label="主要導覽">
+        <a href="#about">認識菠蘿</a>
+        <a href="#gallery">插畫小誌</a>
+        <a href="#notes">內容原則</a>
+        <a class="nav-pill" href="#instagram">Instagram 籌備中</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">一隻非洲灰鸚鵡的插畫小誌</p>
+          <h1>你好，<br>認識<span class="accent">菠蘿</span>。</h1>
+          <p class="hero-copy">一個慢慢寫下菠蘿故事的小天地：分享已確認的真實片段、清楚標示的角色插畫，以及有可靠來源的鸚鵡小知識。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#gallery">翻開插畫小誌 <span class="arrow" aria-hidden="true">↘</span></a>
+            <a class="btn btn-quiet" href="#about">先認識菠蘿</a>
+          </div>
+          <p class="hero-small">以香港生活感作插畫靈感；概念場景不代表菠蘿真實生活地點。</p>
+        </div>
+        <div class="hero-art">
+          <div class="hero-sun" aria-hidden="true"></div>
+          <div class="art-frame">
+            <img src="assets/boluo_ig_04_hk_concept.webp" alt="菠蘿的香港城市靈感概念插畫；並非真實照片或居住地紀錄" fetchpriority="high">
+            <div class="art-caption"><span>菠蘿的城市靈感</span><span>概念插畫 · 未發布預覽</span></div>
+          </div>
+          <div class="art-stamp" aria-label="角色插畫，並非真實相片">角色插畫<br>不是相片</div>
+        </div>
+      </div>
+    </section>
+    <section class="facts" id="about" aria-label="菠蘿小檔案">
+      <div class="wrap facts-grid">
+        <div class="fact"><span class="fact-no">01</span><span><span class="fact-label">名字</span><span class="fact-value">菠蘿</span></span></div>
+        <div class="fact"><span class="fact-no">02</span><span><span class="fact-label">品種</span><span class="fact-value">非洲灰鸚鵡</span></span></div>
+        <div class="fact"><span class="fact-no">03</span><span><span class="fact-label">這裏會分享</span><span class="fact-value">真實日常・角色插畫・鸚鵡筆記</span></span></div>
+      </div>
+    </section>
+    <section class="intro">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">A LITTLE NOTEBOOK</p><h2>呢個小天地，會寫三種內容</h2></div>
+          <p class="section-note">沒有真實素材時，就先留白；不替菠蘿編造習慣、對白或生活故事。</p>
+        </div>
+        <div class="content-cards">
+          <article class="content-card"><span class="card-index">01 / 日常</span><span class="card-mark" aria-hidden="true">日</span><h3>菠蘿真實日常</h3><p>只記錄主人提供、已確認的真實相片、短片與生活片段。</p></article>
+          <article class="content-card"><span class="card-index">02 / 插畫</span><span class="card-mark" aria-hidden="true">畫</span><h3>角色插畫小誌</h3><p>水彩角色、香港城市靈感與想像場景；每篇都會註明是插畫。</p></article>
+          <article class="content-card"><span class="card-index">03 / 筆記</span><span class="card-mark" aria-hidden="true">知</span><h3>鸚鵡小知識</h3><p>分享前先核對可靠資料；涉及健康問題，交由鳥類獸醫判斷。</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-section" id="gallery">
+      <div class="wrap">
+        <div class="section-head gallery-head">
+          <div><p class="eyebrow">THE FIRST NINE</p><h2>先由九頁插畫開始</h2></div>
+          <span class="draft-label">IG 首九篇配圖 · 未發布草稿</span>
+        </div>
+        <div class="gallery-grid">
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_01_welcome.webp" alt="菠蘿站在樹枝上的水彩角色插畫，首篇歡迎圖" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">01</span><h3>歡迎認識菠蘿</h3></div><p class="post-desc">小天地的第一聲招呼</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_02_portrait.webp" alt="菠蘿的水彩角色肖像插畫" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">02</span><h3>菠蘿角色圖鑑</h3></div><p class="post-desc">灰羽、淺色面部與紅尾羽</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_03_branch.webp" alt="菠蘿站在樹枝上的角色插畫" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">03</span><h3>枝頭肖像</h3></div><p class="post-desc">留一個位置給下一張場景靈感</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_04_hk_concept.webp" alt="以香港城市景色作背景的菠蘿概念插畫" loading="lazy"><span class="image-tag">概念插畫</span></div><div class="post-meta"><span class="post-number">04</span><h3>窗邊城市靈感</h3></div><p class="post-desc">想像中的場景，不是生活紀錄</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_05_question.webp" alt="菠蘿角色插畫互動帖配圖" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">05</span><h3>你想看什麼？</h3></div><p class="post-desc">真實日常、插畫，還是鸚鵡筆記？</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_06_detail.webp" alt="菠蘿羽毛與面部細節的角色插畫" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">06</span><h3>羽色近看</h3></div><p class="post-desc">角色插畫細節，不是真實特寫</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_07_imagined_garden.webp" alt="菠蘿置身夢想花園的概念插畫" loading="lazy"><span class="image-tag">概念插畫</span></div><div class="post-meta"><span class="post-number">07</span><h3>想像中的羽毛花園</h3></div><p class="post-desc">一次插畫小旅行</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_08_palette.webp" alt="以米白、灰、鼠尾草綠和紅色為主的菠蘿品牌色視覺" loading="lazy"><span class="image-tag">品牌視覺</span></div><div class="post-meta"><span class="post-number">08</span><h3>菠蘿的品牌色</h3></div><p class="post-desc">米白、羽毛灰、鼠尾草綠與紅尾羽</p></article>
+          <article class="post-card"><div class="post-image"><img src="assets/boluo_ig_09_wings.webp" alt="張開翅膀的菠蘿角色插畫" loading="lazy"><span class="image-tag">角色插畫</span></div><div class="post-meta"><span class="post-number">09</span><h3>小天地正式開張</h3></div><p class="post-desc">真實紀錄與想像場景，分開標明</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="note-band" id="notes">
+      <div class="wrap note-grid">
+        <div class="note-quote"><small>菠蘿小誌的約定</small><strong>插畫係插畫，<br>日常係日常。</strong></div>
+        <div class="note-copy">
+          <p class="eyebrow">A SMALL PROMISE</p>
+          <h2>可愛之外，<br>都要講清楚。</h2>
+          <p>角色圖像是插畫，不會包裝成菠蘿的真實照片或經歷。現時只確認菠蘿的名字、品種和角色外觀；其他真實生活資料，等主人提供後才會寫進來。</p>
+          <div class="note-points">
+            <div class="note-point"><b>真實生活</b><span>只寫已確認的片段和資料</span></div>
+            <div class="note-point"><b>插畫場景</b><span>清楚註明角色插畫或概念插畫</span></div>
+            <div class="note-point"><b>照顧知識</b><span>先查可靠來源，不代替獸醫診斷</span></div>
+            <div class="note-point"><b>未知的事</b><span>未確認，就不當成事實寫</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="follow" id="instagram">
+      <div class="wrap follow-inner">
+        <div><h2>小誌先放在這裏。</h2><p>Instagram 帳戶名稱與連結尚待確認，確定後再補上；本頁目前只作網站草稿。</p></div>
+        <a class="btn" href="#gallery">先看首九篇草稿 <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-inner"><p class="footer-brand">菠蘿小誌 · 非洲灰鸚鵡</p><p>角色插畫與真實紀錄清楚分開 · 網站草稿，未發布</p></div>
+  </footer>
+</body>
+</html>
